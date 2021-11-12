@@ -184,13 +184,110 @@
 <details>
   <summary>Click to expand!</summary>
 
--. Push the code to Github with git push
+- Push the code to Github with git push
 
 > git push
 
 - example
 
   ![gitPush](./instruction_images/gitPush.gif)
+
+</details>
+
+</details>
+
+## React Basics
+
+<details>
+  <summary>Click to expand!</summary>
+  
+## React fundamentals
+### HTML DOM vs React Virtual DOM
+<details>
+  <summary>Click to expand!</summary>
+
+![houseLayout](./instruction_images/houseLayout.png)
+
+- Building a webpage is similar to building a house
+  - Building a house: you plan a specific floor layout, choose the colors to paint the walls, and buy the furnitures and appliances you want to use, etc.
+  - Building a webpage: you design the page by planning which and where components should be placed, choose the colors, and decide on what kind of features to implement, etc.
+- HTML
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+    <head></head>
+    <body>
+      <ul class="list">
+        <li class="list__item">List item</li>
+      </ul>
+    </body>
+  </html>
+  ```
+- HTML DOM representation
+
+  ![htmlDOM](./instruction_images/htmlDOM.png)
+
+- React Virtual DOM representation
+  ```javascript
+  const vdom = {
+    tagName: "html",
+    children: [
+      {tagName: "head"},
+      {
+        tagName: "body",
+        children: [
+          {
+            tagName: "ul",
+            attributes: {class: "list"},
+            children: [
+              {
+                tagName: "li",
+                attributes: {class: "list__item"},
+                textContent: "List item",
+              }, // end li
+            ],
+          }, // end ul
+        ],
+      }, // end body
+    ],
+  }; // end html
+  ```
+  ![virtualDOM](./instruction_images/virtualDOM.png)
+
+#### How updating of the HTML DOM affects the building process of the webpage
+
+![slowNInefficient](./instruction_images/slowNInefficient.png)
+
+- whenever you need to make changes, you would need to rebuild the entire webpage again
+- Similarly, when you need to make any changes (small or large), you would need to rebuild the entire house again
+- The disadvantage of doing so is that it would take up time to rebuild everything, even though you had only made 1 small change
+
+#### How React Virtual DOM speed up the updating process of the HTML DOM
+
+- React copies the HTML DOM to create the virtual DOM so as to make it easy to make changes by following the form of a tree data structure
+
+  ![treeDataStructure](./instruction_images/treeDataStructure.png)
+
+  - only the affected node and it's child nodes will be updated, while the rest of the node remains unchanged
+
+- Similarly for a house, it can be broken down into a tree data structure as well
+
+  ![houseTreeLayout](./instruction_images/houseTreeLayout.png)
+
+  - When a room needs to be modified, only that room will be rebuilt, while the rest of the house will be left untouched
+  - in the event where you want the items (child nodes) in the room to remain unchanged, and only modify the room, you would need to specify that you wish to do so
+    - otherwise, by default, when a room gets rebuilt, everything inside will be rebuilt together with the room
+
+- example of how virtual DOM behaves
+
+  ![virtualDOM](./instruction_images/virtualDOM.gif)
+
+</details>
+
+### React Thinking: thinking in components
+
+<details>
+  <summary>Click to expand!</summary>
 
 </details>
 
