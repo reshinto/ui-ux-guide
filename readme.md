@@ -289,6 +289,62 @@
 <details>
   <summary>Click to expand!</summary>
 
+![mockComponent](./instruction_images/mockComponent.png)
+
+#### Break the UI into Components
+
+![mockComponentHierarchy](./instruction_images/mockComponentHierarchy.png)
+
+1. FilterableProductTable (orange): contains the entirety of the example
+2. SearchBar (blue): receives all user input
+3. ProductTable (green): displays and filters the data collection based on user input
+4. ProductCategoryRow (turquoise): displays a heading for each category
+5. ProductRow (red): displays a row for each product
+
+</details>
+
+### Basic React: props, state, lifecycles
+
+<details>
+  <summary>Click to expand!</summary>
+
+- Props
+
+  - data parsed from the parent node to the child node
+  - value cannot be directly modified
+  - example: parent node
+
+    ```javascript
+    import React, {useState} from "react";
+    import ChildNode from "./ChildNode";
+
+    function ParentNode() {
+      const [count, setCount] = useState(0); // 0 = initial state
+      const handleClick = () => {
+        setCount(count + 1);
+      };
+      return <ChildNode handleClick={handleClick} count={count} />;
+    }
+
+    export default ParentNode;
+    ```
+
+    - child node
+
+    ```javascript
+    import React, {useState} from "react";
+
+    function ChildNode(props) {
+      const {handleClick, count} = props;
+      return <div onClick={handleClick}>{count}</div>;
+    }
+
+    export default ParentNode;
+    ```
+
+- State and lifecycles
+  - [basic react reference guide](https://github.com/reshinto/Basic_technologies_revision/blob/master/react/readme.md)
+
 </details>
 
 </details>
