@@ -348,3 +348,82 @@
 </details>
 
 </details>
+
+## CSS defaults
+
+<details>
+  <summary>Click to expand!</summary>
+
+- In a Web or Mobile app, there is CSS default styles built-in
+  - this results in your app appearing different across different browsers or mobile phone / OS (ios, android), even when the css code is exactly the same
+- CSS Reset or normalize would be required to either reset the values to nothing or make css values to be dynamic which changes according to browser or mobile OS / phone type
+
+### Web
+
+<details>
+  <summary>Click to expand!</summary>
+
+- [default css value reference](https://www.w3schools.com/cssref/css_default_values.asp)
+
+- there are many different types of CSS reset or normalize configurations
+
+  - 1 example: [meyer web css reset config](https://meyerweb.com/eric/tools/css/reset/)
+
+- example of not using CSS reset or normalize
+
+  [test page without CSS reset](http://web.simmons.edu/~grovesd/comm244/notes/week3/html-test-page.html)
+
+  ![css-default](./instruction_images/css-default.png)
+
+- example of using CSS reset or normalize
+
+  [test page with CSS reset](http://web.simmons.edu/~grovesd/comm244/notes/week4/normalize-example.html)
+
+</details>
+
+### Mobile
+
+<details>
+  <summary>Click to expand!</summary>
+
+- Iphone on the same phone
+
+  - for this example both without normalize and normalized will look the same on the same Iphone model, however it would look different for different Iphone models
+
+    - note that Iphone Activity Indicator is different from Android
+
+    ![iphone](./instruction_images/iphone-normalized.png)
+
+- Android on the same phone
+
+  - without normalize
+
+    - note that Activity Indicator did not appear by default, color settings need to declared to display it
+    - Text and Activity Indicator is not centralized which is not the desired effect
+
+    ![android](./instruction_images/android.jpg)
+
+  - with normalize
+
+    - color settings need not be declared and appears gray by default
+    - Text and Activity Indicator is centralized which is the desired effect
+
+    ![android-normalized](./instruction_images/android-normalized.jpg)
+
+- example libraries
+
+  - Tool to normalize values in CSS
+
+    [documentation](https://www.npmjs.com/package/react-native-normalize)
+
+    > npm i react-native-normalize
+
+  - Ready to use but limited UI Components with normalized CSS
+
+    [documentation](https://www.npmjs.com/package/react-native-normalized)
+
+    > npm i react-native-normalized
+
+</details>
+
+</details>
