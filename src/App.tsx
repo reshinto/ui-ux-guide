@@ -1,8 +1,7 @@
 import {registerRootComponent} from "expo";
 import {StatusBar} from "expo-status-bar";
 import React from "react";
-import {StyleSheet, View} from "react-native";
-import {Text, ActivityIndicator} from "react-native-normalized";
+import {StyleSheet, View, Text, ActivityIndicator} from "react-native";
 import normalize from "react-native-normalize";
 
 export default function App() {
