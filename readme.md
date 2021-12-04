@@ -537,10 +537,15 @@
      - do not user `SafeAreaView` from `react-native` library as the safe area insets are not auto added
      - a regular `View` component with the safe area insets applied as padding or margin
      - without Safe Area
+
        ![withoutSafeArea](./instruction_images/withoutSafeArea.png)
+
        ![withoutSafeAreaLandscape](./instruction_images/withoutSafeAreaLandscape.png)
+
      - with Safe Area
+
        ![withSafeArea](./instruction_images/withSafeArea.png)
+
        ![withSafeAreaLandscape](./instruction_images/withSafeAreaLandscape.png)
 
      - example
