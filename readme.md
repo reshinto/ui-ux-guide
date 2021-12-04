@@ -418,11 +418,71 @@
 
     > npm i react-native-normalize
 
+    - example
+
+    ```javascript
+    import React from "react";
+    import {StyleSheet, View, Text} from "react-native";
+    import normalize from "react-native-normalize";
+
+    export default function App() {
+      return (
+        <View style={styles.box}>
+          <Text style={styles.text}>Hello World!</Text>
+        </View>
+      );
+    }
+
+    const styles = StyleSheet.create({
+      box: {
+        top: normalize(180, "height"),
+        left: normalize(40),
+        width: normalize(300),
+        height: normalize(300),
+        alignItems: "center",
+        justifyContent: "center",
+      },
+      text: {
+        fontSize: normalize(30),
+      },
+    });
+    ```
+
   - Ready to use but limited UI Components with normalized CSS
 
     [documentation](https://www.npmjs.com/package/react-native-normalized)
 
     > npm i react-native-normalized
+
+    - example
+
+    ```javascript
+    import React from "react";
+    import {StyleSheet} from "react-native";
+    import {View, Text} from "react-native-normalized";
+
+    export default function App() {
+      return (
+        <View style={styles.box}>
+          <Text style={styles.text}>Hello World!</Text>
+        </View>
+      );
+    }
+
+    const styles = StyleSheet.create({
+      box: {
+        top: 180,
+        left: 40,
+        width: 300,
+        height: 300,
+        alignItems: "center",
+        justifyContent: "center",
+      },
+      text: {
+        fontSize: 30,
+      },
+    });
+    ```
 
 </details>
 
