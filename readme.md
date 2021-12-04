@@ -586,7 +586,7 @@
 
 ![navigation](./instruction_images/navigation.gif)
 
-### React Native: Step 1: Set Safe Area
+### Step 1: Set Safe Area
 
 <details>
   <summary>Click to expand!</summary>
@@ -664,7 +664,7 @@
 
 </details>
 
-### React Native: Step 2a: Set Navigation Container
+### Step 2a: Set Navigation Container
 
 <details>
   <summary>Click to expand!</summary>
@@ -721,7 +721,7 @@
 
 </details>
 
-### React Native: Step 2b: Set screen links config
+### Step 2b: Set screen links config
 
 <details>
   <summary>Click to expand!</summary>
@@ -810,7 +810,7 @@
 
 </details>
 
-### React Native: Step 3: Set Root Navigator
+### Step 3: Set Root Navigator
 
 <details>
   <summary>Click to expand!</summary>
@@ -1029,6 +1029,415 @@
 
       export default Navigation;
       ```
+
+</details>
+
+</details>
+
+## Custom Themes (toggle light & dark mode)
+
+<details>
+  <summary>Click to expand!</summary>
+
+## React Native
+
+![customTheme](./instruction_images/customTheme.gif)
+
+### Step 1: Enable Custom Theme
+
+<details>
+  <summary>Click to expand!</summary>
+
+- During developmenet mode, `useColorScheme` will always return the default `light` value regardless of actual phone settings
+
+1. Ensure null value is not returned
+
+   - example
+
+     - path: `./shared/hooks/useColorScheme.ts`
+
+       ```typescript
+       import {
+         ColorSchemeName,
+         useColorScheme as _useColorScheme,
+       } from "react-native";
+
+       // The useColorScheme value is always either light or dark, but the built-in
+       // type suggests that it can be null. This will not happen in practice, so this
+       // makes it a bit easier to work with.
+       export default function useColorScheme(): NonNullable<ColorSchemeName> {
+         return _useColorScheme() as NonNullable<ColorSchemeName>;
+       }
+       ```
+
+2. Configure Navigation
+
+   - add theme to `NavigationContainer`
+
+   - example
+
+     ```typescript
+     import React from "react";
+     import {
+       DarkTheme,
+       DefaultTheme,
+       NavigationContainer,
+     } from "@react-navigation/native";
+     import LinkingConfig from "./LinkingConfig";
+     import RootNavigator from "./RootNavigator";
+     import {ColorSchemeName} from "react-native";
+
+     function Navigation({colorScheme}: {colorScheme: ColorSchemeName}) {
+       return (
+         <NavigationContainer
+           linking={LinkingConfig}
+           theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+         >
+           <RootNavigator />
+         </NavigationContainer>
+       );
+     }
+
+     export default Navigation;
+     ```
+
+3. Configure App
+
+   - get phone's theme mode (light / dark) and parse value to `NavigationContainer`
+
+   - example
+
+     ```typescript
+     import React from "react";
+     import {StyleSheet} from "react-native";
+     import {
+       SafeAreaProvider,
+       SafeAreaView,
+     } from "react-native-safe-area-context";
+     import Navigation from "./shared/components/Navigation";
+     import useCachedResources from "./shared/hooks/useCachedResources";
+     import useColorScheme from "./shared/hooks/useColorScheme";
+     import {getBarStyle} from "./shared/utils/helpers/statusBar";
+
+     export default function App() {
+       const isLoadingComplete = useCachedResources();
+       const colorScheme = useColorScheme();
+
+       if (!isLoadingComplete) {
+         return null;
+       }
+
+       return (
+         <SafeAreaProvider>
+           <SafeAreaView style={styles.container}>
+             <Navigation colorScheme={colorScheme} />
+           </SafeAreaView>
+         </SafeAreaProvider>
+       );
+     }
+
+     const styles = StyleSheet.create({
+       container: {
+         flex: 1,
+       },
+     });
+     ```
+
+</details>
+
+### Step 2: Add Light and Dark mode Themes
+
+<details>
+  <summary>Click to expand!</summary>
+
+1. Create themes
+
+   - example
+
+     - create global palette style to set all colors and themes
+
+       - path: `./shared/styles/palette.ts`
+
+         ```javascript
+         const WHITE = "#fff";
+
+         export const colors = {
+           white: WHITE,
+           black: "#000",
+           tintColorLight: "#2f95dc",
+           tintColorDark: WHITE,
+         };
+
+         export const themes = {
+           light: {
+             text: "#000",
+             background: "#fff",
+             tint: colors.tintColorLight,
+             tabIconDefault: "#ccc",
+             tabIconSelected: colors.tintColorLight,
+           },
+           dark: {
+             text: "#fff",
+             background: "#000",
+             tint: colors.tintColorDark,
+             tabIconDefault: "#ccc",
+             tabIconSelected: colors.tintColorDark,
+           },
+         };
+         ```
+
+2. Create helper functions to support themed components
+
+   - example
+
+     - path: `./shared/utils/helpers/themedComponents.ts`
+
+       ```typescript
+       import useColorScheme from "../../hooks/useColorScheme";
+       import {themes} from "../../styles/palette";
+
+       export const useThemeColor = (
+         props: {light?: string; dark?: string},
+         colorName: keyof typeof themes.light & keyof typeof themes.dark
+       ) => {
+         const theme = useColorScheme();
+         const colorFromProps = props[theme];
+
+         if (colorFromProps) {
+           return colorFromProps;
+         }
+
+         return themes[theme][colorName];
+       };
+       ```
+
+     - path: `./shared/utils/helpers/statusBar.ts`
+       - status bar's bar style needs to be opposite of the theme type
+       ```typescript
+       export const getBarStyle = (colorScheme: string) =>
+         colorScheme === "dark" ? "light-content" : "dark-content";
+       ```
+
+3. Create themed components
+
+   - example
+
+     - path: `./shared/components/ThemedComponents/themedComponentsTypes.tsx`
+
+       ```typescript
+       import {
+         Text as DefaultText,
+         View as DefaultView,
+         SafeAreaView as DefaultSafeAreaView,
+       } from "react-native";
+
+       type ThemeProps = {
+         lightColor?: string;
+         darkColor?: string;
+       };
+
+       export type TextProps = ThemeProps & DefaultText["props"];
+       export type ViewProps = ThemeProps & DefaultView["props"];
+       export type SafeAreaViewProps = ThemeProps &
+         DefaultSafeAreaView["props"];
+       ```
+
+     - path: `./shared/components/ThemedComponents/SafeAreaView.tsx`
+
+       ```typescript
+       import React from "react";
+       import {SafeAreaView as DefaultSafeAreaView} from "react-native-safe-area-context";
+       import {useThemeColor} from "../../utils/helpers/themedComponents";
+       import {SafeAreaViewProps} from "./themedComponentsTypes";
+
+       const SafeAreaView = (props: SafeAreaViewProps) => {
+         const {style, lightColor, darkColor, ...otherProps} = props;
+         const backgroundColor = useThemeColor(
+           {light: lightColor, dark: darkColor},
+           "background"
+         );
+
+         return (
+           <DefaultSafeAreaView
+             style={[{backgroundColor}, style]}
+             {...otherProps}
+           />
+         );
+       };
+
+       export default SafeAreaView;
+       ```
+
+     - path: `./shared/components/ThemedComponents/View.tsx`
+
+       ```typescript
+       import React from "react";
+       import {View as DefaultView} from "react-native";
+       import {useThemeColor} from "../../utils/helpers/themedComponents";
+       import {ViewProps} from "./themedComponentsTypes";
+
+       const View = (props: ViewProps) => {
+         const {style, lightColor, darkColor, ...otherProps} = props;
+         const backgroundColor = useThemeColor(
+           {light: lightColor, dark: darkColor},
+           "background"
+         );
+
+         return (
+           <DefaultView style={[{backgroundColor}, style]} {...otherProps} />
+         );
+       };
+
+       export default View;
+       ```
+
+     - path: `./shared/components/ThemedComponents/Text.tsx`
+
+       ```typescript
+       import React from "react";
+       import {Text as DefaultText} from "react-native";
+       import {useThemeColor} from "../../utils/helpers/themedComponents";
+       import {TextProps} from "./themedComponentsTypes";
+
+       const Text = (props: TextProps) => {
+         const {style, lightColor, darkColor, ...otherProps} = props;
+         const color = useThemeColor(
+           {light: lightColor, dark: darkColor},
+           "text"
+         );
+
+         return <DefaultText style={[{color}, style]} {...otherProps} />;
+       };
+
+       export default Text;
+       ```
+
+     - path: `./shared/components/ThemedComponents/StyledText.tsx`
+
+       - adds additional custom styled font type to custom `Text` themed component
+
+       ```typescript
+       import React from "react";
+       import {TextProps} from "./themedComponentsTypes";
+       import Text from "./Text";
+
+       export function MonoText(props: TextProps) {
+         return (
+           <Text {...props} style={[props.style, {fontFamily: "space-mono"}]} />
+         );
+       }
+       ```
+
+4. Using themed components and helper functions
+
+   - example
+
+     - use `getBarStyle` helper function to set status bar's style depending on phone theme mode, use custom `SafeAreaView` themed component in `App` root component
+
+       ```typescript
+       import React from "react";
+       import {StyleSheet, StatusBar} from "react-native";
+       import {SafeAreaProvider} from "react-native-safe-area-context";
+       import Navigation from "./shared/components/Navigation";
+       import useCachedResources from "./shared/hooks/useCachedResources";
+       import useColorScheme from "./shared/hooks/useColorScheme";
+       import SafeAreaView from "./shared/components/ThemedComponents/SafeAreaView";
+       import {getBarStyle} from "./shared/utils/helpers/statusBar";
+
+       export default function App() {
+         const isLoadingComplete = useCachedResources();
+         const colorScheme = useColorScheme();
+
+         if (!isLoadingComplete) {
+           return null;
+         }
+
+         return (
+           <SafeAreaProvider>
+             <SafeAreaView style={styles.container}>
+               <StatusBar barStyle={getBarStyle(colorScheme)} />
+               <Navigation colorScheme={colorScheme} />
+             </SafeAreaView>
+           </SafeAreaProvider>
+         );
+       }
+
+       const styles = StyleSheet.create({
+         container: {
+           flex: 1,
+         },
+       });
+       ```
+
+     - use custom `View` and `Text` themed component in `RootScreen`
+
+       ```typescript
+       import React from "react";
+       import {StyleSheet, Button} from "react-native";
+       import normalize from "react-native-normalize";
+       import {RootStackScreenProps} from "../../shared/components/Navigation/navigationTypes";
+       import View from "../../shared/components/ThemedComponents/View";
+       import Text from "../../shared/components/ThemedComponents/Text";
+
+       function RootScreen({navigation}: RootStackScreenProps<"Root">) {
+         return (
+           <View style={styles.box}>
+             <Text style={styles.text}>Hello World 1!</Text>
+             <Button
+               title="Go to Home"
+               onPress={() => navigation.navigate("Home")}
+             />
+           </View>
+         );
+       }
+
+       export default RootScreen;
+
+       const styles = StyleSheet.create({
+         box: {
+           height: "100%",
+         },
+         text: {
+           height: "80%",
+           fontSize: normalize(30),
+         },
+       });
+       ```
+
+     - use custom `View` and `MonoText` from `StyledText` themed component in `HomeScreen`
+
+       ```typescript
+       import React from "react";
+       import {StyleSheet, Button} from "react-native";
+       import normalize from "react-native-normalize";
+       import {RootStackScreenProps} from "../../shared/components/Navigation/navigationTypes";
+       import View from "../../shared/components/ThemedComponents/View";
+       import {MonoText} from "../../shared/components/ThemedComponents/StyledText";
+
+       function HomeScreen({navigation}: RootStackScreenProps<"Home">) {
+         return (
+           <View style={styles.box}>
+             <MonoText style={styles.text}>Hello World 2!</MonoText>
+             <Button
+               title="Go to Not Found"
+               onPress={() => navigation.navigate("NotFound")}
+             />
+           </View>
+         );
+       }
+
+       export default HomeScreen;
+
+       const styles = StyleSheet.create({
+         box: {
+           height: "100%",
+         },
+         text: {
+           height: "80%",
+           fontSize: normalize(30),
+         },
+       });
+       ```
 
 </details>
 
