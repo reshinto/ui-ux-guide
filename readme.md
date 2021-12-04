@@ -487,3 +487,455 @@
 </details>
 
 </details>
+
+## Screen Navigation
+
+<details>
+  <summary>Click to expand!</summary>
+
+## React Native
+
+![navigation](./instruction_images/navigation.gif)
+
+### React Native: Step 1: Set Safe Area
+
+<details>
+  <summary>Click to expand!</summary>
+
+- The purpose is to render content within the safe area boundaries of a device
+- Install `react-native-safe-area-context` library
+
+  - [documentation](https://docs.expo.dev/versions/latest/sdk/safe-area-context/)
+  - if using expo
+    > expo install react-native-safe-area-context
+  - if using bare react-native
+    > npm install react-native-safe-area-context
+
+- Implementation
+
+  1. Set `SafeAreaProvider`
+
+     - provides system elements (status bar, notches, etc.) to consumers (`SafeAreaView`, `useSafeAreaInsets`)
+     - have one provider at the top of app
+     - should add `SafeAreaProvider` in app root component
+       - may need to add it in other places like the root of modals and routes when using `react-native-screens`
+     - providers should not be inside a `View` that is animated with `Animated` or inside a `ScrollView` as it can cause very frequent updates
+     - accepts all `View` props
+     - has a default style of `{flex: 1}`
+
+     ```javascript
+     import React from "react";
+     import {SafeAreaProvider} from "react-native-safe-area-context";
+
+     export default function App() {
+       return <SafeAreaProvider></SafeAreaProvider>;
+     }
+     ```
+
+  2. Set `SafeAreaView`
+
+     - do not user `SafeAreaView` from `react-native` library as the safe area insets are not auto added
+     - a regular `View` component with the safe area insets applied as padding or margin
+     - without Safe Area
+       ![withoutSafeArea](./instruction_images/withoutSafeArea.png)
+       ![withoutSafeAreaLandscape](./instruction_images/withoutSafeAreaLandscape.png)
+     - with Safe Area
+       ![withSafeArea](./instruction_images/withSafeArea.png)
+       ![withSafeAreaLandscape](./instruction_images/withSafeAreaLandscape.png)
+
+     - example
+
+       ```javascript
+       import React from "react";
+       import {StyleSheet} from "react-native";
+       import {
+         SafeAreaProvider,
+         SafeAreaView,
+       } from "react-native-safe-area-context";
+
+       export default function App() {
+         return (
+           <SafeAreaProvider>
+             <SafeAreaView style={styles.container}></SafeAreaView>
+           </SafeAreaProvider>
+         );
+       }
+
+       const styles = StyleSheet.create({
+         container: {
+           flex: 1,
+         },
+       });
+       ```
+
+</details>
+
+### React Native: Step 2a: Set Navigation Container
+
+<details>
+  <summary>Click to expand!</summary>
+
+- contains core utilities used by navigators to create the navigation structure in app
+- Install `@react-navigation/native` library
+
+  - [documentation](https://reactnavigation.org/docs/getting-started/)
+
+  > npm install @react-navigation/native
+
+- example
+
+  - path: `./shared/components/Navigation/index.tsx`
+
+    ```javascript
+    import React from "react";
+    import {NavigationContainer} from "@react-navigation/native";
+
+    function Navigation() {
+      return <NavigationContainer></NavigationContainer>;
+    }
+
+    export default Navigation;
+    ```
+
+  - import `Navigation` to root app component
+
+    ```javascript
+    import React from "react";
+    import {StyleSheet} from "react-native";
+    import {
+      SafeAreaProvider,
+      SafeAreaView,
+    } from "react-native-safe-area-context";
+    import Navigation from "./shared/components/Navigation";
+
+    export default function App() {
+      return (
+        <SafeAreaProvider>
+          <SafeAreaView style={styles.container}>
+            <Navigation />
+          </SafeAreaView>
+        </SafeAreaProvider>
+      );
+    }
+
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+      },
+    });
+    ```
+
+</details>
+
+### React Native: Step 2b: Set screen links config
+
+<details>
+  <summary>Click to expand!</summary>
+
+- Install `expo-linking` library
+
+  - [documentation](https://docs.expo.dev/versions/latest/sdk/linking/)
+
+  > expo install expo-linking
+
+- Implementation
+
+  - Link the app
+    - specify a scheme for app
+    - can register for a scheme in the `app.json` by adding a string under the scheme key (use only lower case)
+    - [documentation](https://docs.expo.dev/guides/linking/#linking-to-your-app)
+    - example
+      - links can be opened with `myapp://`
+      ```json
+      {
+        "expo": {
+          "scheme": "myapp"
+        }
+      }
+      ```
+  - Configure links
+
+    - configure React Navigation to handle internal screens or external links
+
+    - [documentation](https://reactnavigation.org/docs/configuring-links)
+
+    - example
+
+      - navigation types (not required if not using typescript)
+
+        - path: `../../shared/components/Navigation/navigationTypes.tsx`
+
+          ```typescript
+          import {NativeStackScreenProps} from "@react-navigation/native-stack";
+
+          export type RootStackParamList = {
+            Root: undefined;
+            Home: undefined;
+            NotFound: undefined;
+          };
+          ```
+
+      - create link configuration, add type if using `typescript`
+
+        - path: `./LinkingConfig.ts`
+
+          ```typescript
+          import {LinkingOptions} from "@react-navigation/native";
+          import {RootStackParamList} from "./navigationTypes";
+          import * as Linking from "expo-linking";
+
+          const LinkingConfig: LinkingOptions<RootStackParamList> = {
+            prefixes: [Linking.makeUrl("/")],
+            config: {
+              screens: {
+                Root: "root",
+                Home: "home",
+                NotFound: "*",
+              },
+            },
+          };
+
+          export default LinkingConfig;
+          ```
+
+      - add link config to navigation
+
+        ```javascript
+        import React from "react";
+        import {NavigationContainer} from "@react-navigation/native";
+        import LinkingConfig from "./LinkingConfig";
+
+        function Navigation() {
+          return (
+            <NavigationContainer linking={LinkingConfig}></NavigationContainer>
+          );
+        }
+
+        export default Navigation;
+        ```
+
+</details>
+
+### React Native: Step 3: Set Root Navigator
+
+<details>
+  <summary>Click to expand!</summary>
+
+- Install `@react-navigation/native-stack` library
+
+  - [documentation](https://reactnavigation.org/docs/native-stack-navigator/)
+
+  > npm install @react-navigation/native-stack
+
+- Must install additional dependency `react-native-screens` library
+
+  - [documentation](https://github.com/software-mansion/react-native-screens)
+
+  - if using expo
+    > expo install react-native-screens
+  - if using bare React-native
+    > npm install react-native-screens
+
+- Implementation
+
+  - Create screens
+
+    - example
+
+      - navigation types (not required if not using typescript)
+
+        - path: `../../shared/components/Navigation/navigationTypes.tsx`
+
+          ```typescript
+          import {NativeStackScreenProps} from "@react-navigation/native-stack";
+
+          export type RootStackParamList = {
+            Root: undefined;
+            Home: undefined;
+            NotFound: undefined;
+          };
+
+          export type RootStackScreenProps<
+            Screen extends keyof RootStackParamList
+          > = NativeStackScreenProps<RootStackParamList, Screen>;
+          ```
+
+      - Root Screen
+
+        - path: `../../../screens/RootScreen/index.tsx`
+
+          ```typescript
+          import React from "react";
+          import {StyleSheet, View, Button, Text} from "react-native";
+          import normalize from "react-native-normalize";
+          import {NativeStackScreenProps} from "@react-navigation/native-stack";
+          import {RootStackScreenProps} from "../../shared/components/Navigation/navigationTypes";
+
+          function RootScreen({navigation}: RootStackScreenProps<"Root">) {
+            return (
+              <View style={styles.box}>
+                <Text style={styles.text}>Hello World 1!</Text>
+                <Button
+                  title="Go to Home"
+                  onPress={() => navigation.navigate("Home")}
+                />
+              </View>
+            );
+          }
+
+          export default RootScreen;
+
+          const styles = StyleSheet.create({
+            box: {
+              height: "100%",
+            },
+            text: {
+              height: "80%",
+              fontSize: normalize(30),
+            },
+          });
+          ```
+
+      - Home Screen
+
+        - path: `../../../screens/HomeScreen/index.tsx`
+
+          ```typescript
+          import React from "react";
+          import {StyleSheet, View, Button, Text} from "react-native";
+          import normalize from "react-native-normalize";
+          import {NativeStackScreenProps} from "@react-navigation/native-stack";
+          import {RootStackScreenProps} from "../../shared/components/Navigation/navigationTypes";
+
+          function HomeScreen({navigation}: RootStackScreenProps<"Home">) {
+            return (
+              <View style={styles.box}>
+                <Text style={styles.text}>Hello World 2!</Text>
+                <Button
+                  title="Go to Not Found"
+                  onPress={() => navigation.navigate("NotFound")}
+                />
+              </View>
+            );
+          }
+
+          export default HomeScreen;
+
+          const styles = StyleSheet.create({
+            box: {
+              height: "100%",
+            },
+            text: {
+              height: "80%",
+              fontSize: normalize(30),
+            },
+          });
+          ```
+
+      - Not Found Screen
+
+        - path: `../../../screens/NotFoundScreen/index.tsx`
+
+          ```typescript
+          import React from "react";
+          import {StyleSheet, TouchableOpacity, Text, View} from "react-native";
+          import {RootStackScreenProps} from "../../shared/components/Navigation/navigationTypes";
+
+          function NotFoundScreen({
+            navigation,
+          }: RootStackScreenProps<"NotFound">) {
+            return (
+              <View style={styles.container}>
+                <Text style={styles.title}>This screen doesn't exist.</Text>
+                <TouchableOpacity
+                  onPress={() => navigation.replace("Root")}
+                  style={styles.link}
+                >
+                  <Text style={styles.linkText}>Go to root screen!</Text>
+                </TouchableOpacity>
+              </View>
+            );
+          }
+
+          export default NotFoundScreen;
+
+          const styles = StyleSheet.create({
+            container: {
+              flex: 1,
+              alignItems: "center",
+              justifyContent: "center",
+              padding: 20,
+            },
+            title: {
+              fontSize: 20,
+              fontWeight: "bold",
+            },
+            link: {
+              marginTop: 15,
+              paddingVertical: 15,
+            },
+            linkText: {
+              fontSize: 14,
+              color: "#2e78b7",
+            },
+          });
+          ```
+
+  - Create Root Navigator
+
+    - example
+
+      - path: `./RootNavigator.tsx`
+
+        ```javascript
+        import React from "react";
+        import {createNativeStackNavigator} from "@react-navigation/native-stack";
+        import HomeScreen from "../../../screens/HomeScreen";
+        import RootScreen from "../../../screens/RootScreen";
+        import {RootStackParamList} from "./navigationTypes";
+        import NotFoundScreen from "../../../screens/NotFoundScreen";
+
+        function RootNavigator() {
+          const Stack = createNativeStackNavigator<RootStackParamList>();
+
+          return (
+            <Stack.Navigator
+              screenOptions={{
+                headerShown: false,
+                animation: "none",
+              }}
+            >
+              <Stack.Screen name="Root" component={RootScreen} />
+              <Stack.Screen name="Home" component={HomeScreen} />
+              <Stack.Screen name="NotFound" component={NotFoundScreen} />
+            </Stack.Navigator>
+          );
+        }
+
+        export default RootNavigator;
+        ```
+
+  - Add Root Navigator to Navigation
+
+    - example
+
+      ```javascript
+      import React from "react";
+      import {NavigationContainer} from "@react-navigation/native";
+      import LinkingConfig from "./LinkingConfig";
+      import RootNavigator from "./RootNavigator";
+
+      function Navigation() {
+        return (
+          <NavigationContainer linking={LinkingConfig}>
+            <RootNavigator />
+          </NavigationContainer>
+        );
+      }
+
+      export default Navigation;
+      ```
+
+</details>
+
+</details>
