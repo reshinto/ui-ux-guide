@@ -1,8 +1,9 @@
 import React from "react";
-import {StyleSheet, View, Button, Text} from "react-native";
+import {StyleSheet, Button} from "react-native";
 import normalize from "react-native-normalize";
-import {colors} from "../../shared/styles/palette";
 import {RootStackScreenProps} from "../../shared/components/Navigation/navigationTypes";
+import View from "../../shared/components/ThemedComponents/View";
+import Text from "../../shared/components/ThemedComponents/Text";
 
 function RootScreen({navigation}: RootStackScreenProps<"Root">) {
   return (
@@ -18,7 +19,6 @@ export default RootScreen;
 const styles = StyleSheet.create({
   box: {
     height: "100%",
-    backgroundColor: colors.white,
   },
   text: {
     height: "80%",

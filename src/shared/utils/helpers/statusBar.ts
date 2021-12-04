@@ -1,0 +1,1 @@
+export const getBarStyle = (colorScheme: string) => colorScheme === "dark" ? "light-content" : "dark-content";
