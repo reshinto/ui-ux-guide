@@ -349,6 +349,95 @@
 
 </details>
 
+## Improve Performance
+
+<details>
+  <summary>Click to expand!</summary>
+
+### Improve subsequent loading performance if using Expo React Native
+
+<details>
+  <summary>Click to expand!</summary>
+
+- Without Cached
+
+  ![expoNoCached](./instruction_images/expoNoCached.gif)
+
+- With Cached
+
+  ![expoCached](./instruction_images/expoCached.gif)
+
+- Install missing dependencies
+
+  - current `expo` version 43.0.2, it is only missing `expo-splash-screen`
+    > expo install expo-splash-screen
+
+- Implementation
+
+  - add missing font in `assets/fonts` folder
+    - `SpaceMono-Regular.ttf`
+  - create `useCachedResources.ts` custom hook
+
+    - path: `./shared/hooks/useCachedResources.ts`
+
+      ```javascript
+      import {FontAwesome} from "@expo/vector-icons";
+      import * as Font from "expo-font";
+      import * as SplashScreen from "expo-splash-screen";
+      import {useState, useEffect} from "react";
+
+      export default function useCachedResources() {
+        const [isLoadingComplete, setLoadingComplete] = useState(false);
+
+        // Load any resources or data that we need prior to rendering the app
+        useEffect(() => {
+          async function loadResourcesAndDataAsync() {
+            try {
+              SplashScreen.preventAutoHideAsync();
+
+              // Load fonts
+              await Font.loadAsync({
+                ...FontAwesome.font,
+                "space-mono": require("../../../assets/fonts/SpaceMono-Regular.ttf"),
+              });
+            } catch (e) {
+              // We might want to provide this error information to an error reporting service
+              console.warn(e);
+            } finally {
+              setLoadingComplete(true);
+              SplashScreen.hideAsync();
+            }
+          }
+
+          loadResourcesAndDataAsync();
+        }, []);
+
+        return isLoadingComplete;
+      }
+      ```
+
+  - import and use the `useCachedResources` custom hook
+
+    ```javascript
+    import React from "react";
+    import {View} from "react-native";
+    import useCachedResources from "./shared/hooks/useCachedResources";
+
+    export default function App() {
+      const isLoadingComplete = useCachedResources();
+
+      if (!isLoadingComplete) {
+        return null;
+      }
+
+      return <View></View>;
+    }
+    ```
+
+</details>
+
+</details>
+
 ## CSS defaults
 
 <details>
