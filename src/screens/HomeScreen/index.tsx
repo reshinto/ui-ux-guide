@@ -1,13 +1,14 @@
 import React from "react";
-import {StyleSheet, View, Button, Text} from "react-native";
+import {StyleSheet, Button} from "react-native";
 import normalize from "react-native-normalize";
-import {colors} from "../../shared/styles/palette";
 import {RootStackScreenProps} from "../../shared/components/Navigation/navigationTypes";
+import View from "../../shared/components/ThemedComponents/View";
+import {MonoText} from "../../shared/components/ThemedComponents/StyledText";
 
 function HomeScreen({navigation}: RootStackScreenProps<"Home">) {
   return (
     <View style={styles.box}>
-      <Text style={styles.text}>Hello World 2!</Text>
+      <MonoText style={styles.text}>Hello World 2!</MonoText>
       <Button
         title="Go to Not Found"
         onPress={() => navigation.navigate("NotFound")}
@@ -21,7 +22,6 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   box: {
     height: "100%",
-    backgroundColor: colors.white,
   },
   text: {
     height: "80%",
