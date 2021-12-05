@@ -1041,7 +1041,13 @@
 
 ## React Native
 
-![customTheme](./instruction_images/customTheme.gif)
+- light mode, Root Screen uses themed components, Home Screen uses themed with font styled components, Not Found Screen uses default components
+
+  ![customTheme](./instruction_images/customTheme.gif)
+
+- dark mode, Root Screen uses themed components, Home Screen uses themed with font styled components, Not Found Screen uses default components
+
+  ![darkmode](./instruction_images/darkmode.gif)
 
 ### Step 1: Enable Custom Theme
 
