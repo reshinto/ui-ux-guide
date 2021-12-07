@@ -349,7 +349,7 @@
 
 </details>
 
-## Improve Performance
+## Preload Resources (e.g.: fonts) and Improve Performance
 
 <details>
   <summary>Click to expand!</summary>
@@ -1054,11 +1054,35 @@
 <details>
   <summary>Click to expand!</summary>
 
-- During developmenet mode, `useColorScheme` will always return the default `light` value regardless of actual phone settings
-
-1. Ensure null value is not returned
+1. Enable retrieval of dark or light mode settings from phone, and ensure null value is not returned when retrieving theme settings from phone
 
    - example
+
+     - path: `app.json`
+
+       ```json
+       {
+         "expo": {
+           "userInterfaceStyle": "automatic"
+         }
+       }
+       ```
+
+       - if `useColorScheme()` always returns `light` on `Android`, use the following settings instead
+
+         ```json
+         {
+           "expo": {
+             "userInterfaceStyle": "automatic",
+             "ios": {
+               "userInterfaceStyle": "automatic"
+             },
+             "android": {
+               "userInterfaceStyle": "automatic"
+             }
+           }
+         }
+         ```
 
      - path: `./shared/hooks/useColorScheme.ts`
 
