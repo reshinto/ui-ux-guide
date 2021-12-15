@@ -1472,3 +1472,34 @@
 </details>
 
 </details>
+
+## Code Implementation Guide
+
+<details>
+  <summary>Click to expand!</summary>
+
+## Step 1: Create Screen Header Component
+
+<details>
+  <summary>Click to expand!</summary>
+  
+- install `Forum` font
+
+- [download Forum Font](https://fonts.google.com/specimen/Forum)
+
+</details>
+
+## Step 2: Create Slider Component
+
+<details>
+  <summary>Click to expand!</summary>
+
+- Install `React Native Elements` library
+
+  - [documentation](https://reactnativeelements.com/docs/)
+
+  > npm install react-native-elements
+
+</details>
+
+</details>
