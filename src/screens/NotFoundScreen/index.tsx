@@ -1,6 +1,9 @@
 import React from "react";
-import {StyleSheet, TouchableOpacity, Text, View} from "react-native";
+import {StyleSheet, TouchableOpacity} from "react-native";
+
 import {RootStackScreenProps} from "../../shared/components/Navigation/navigationTypes";
+import View from "../../shared/components/ThemedComponents/View";
+import Text from "../../shared/components/ThemedComponents/Text";
 
 function NotFoundScreen({navigation}: RootStackScreenProps<"NotFound">) {
   return (

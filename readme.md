@@ -1342,7 +1342,7 @@
        export default Text;
        ```
 
-     - path: `./shared/components/ThemedComponents/StyledText.tsx`
+     - path: `./shared/components/ThemedComponents/StyledText/MonoText.tsx`
 
        - adds additional custom styled font type to custom `Text` themed component
 
@@ -1442,7 +1442,7 @@
        import normalize from "react-native-normalize";
        import {RootStackScreenProps} from "../../shared/components/Navigation/navigationTypes";
        import View from "../../shared/components/ThemedComponents/View";
-       import {MonoText} from "../../shared/components/ThemedComponents/StyledText";
+       import MonoText from "../../shared/components/ThemedComponents/StyledText/MonoText";
 
        function HomeScreen({navigation}: RootStackScreenProps<"Home">) {
          return (
