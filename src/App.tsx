@@ -18,8 +18,8 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
+      <StatusBar barStyle={getBarStyle(colorScheme)} />
       <SafeAreaView style={styles.container}>
-        <StatusBar barStyle={getBarStyle(colorScheme)} />
         <Navigation colorScheme={colorScheme} />
       </SafeAreaView>
     </SafeAreaProvider>
