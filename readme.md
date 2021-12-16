@@ -1483,7 +1483,7 @@
 <details>
   <summary>Click to expand!</summary>
   
-- install `Forum` font
+- Install `Forum` font
 
 - [download Forum Font](https://fonts.google.com/specimen/Forum)
 
@@ -1499,6 +1499,12 @@
   - [documentation](https://reactnativeelements.com/docs/)
 
   > npm install react-native-elements
+
+- Install `Expo Linear Gradient` library
+
+  - [documentation](https://docs.expo.dev/versions/latest/sdk/linear-gradient/)
+
+  > expo install expo-linear-gradient
 
 </details>
 

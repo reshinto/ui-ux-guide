@@ -7,10 +7,12 @@ import useCachedResources from "./shared/hooks/useCachedResources";
 import useColorScheme from "./shared/hooks/useColorScheme";
 import {getBarStyle} from "./shared/utils/helpers/statusBar";
 import SafeAreaView from "./shared/components/ThemedComponents/SafeAreaView";
+import useIgnoreLogs from "./shared/hooks/useIgnoreLogs";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
+  useIgnoreLogs();
 
   if (!isLoadingComplete) {
     return null;

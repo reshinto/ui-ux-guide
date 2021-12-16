@@ -1,14 +1,15 @@
 import React from "react";
 import {StyleSheet} from "react-native";
 import normalize from "react-native-normalize";
+
 import View from "../ThemedComponents/View";
 import ForumText from "../ThemedComponents/StyledText/ForumText";
 import DefaultPageSymbol from "./DefaultPageSymbol";
-import PageNumber from "./PageNumber";
+import TopicNumber from "./TopicNumber";
 
-function ScreenHeader({pageNumber}: {pageNumber: string}) {
-  const pageNumberText = pageNumber ? (
-    <PageNumber pageNumber={pageNumber} />
+function ScreenHeader({topicNumber}: {topicNumber: string | undefined}) {
+  const topicNumberText = topicNumber ? (
+    <TopicNumber topicNumber={topicNumber} />
   ) : (
     <DefaultPageSymbol />
   );
@@ -16,7 +17,7 @@ function ScreenHeader({pageNumber}: {pageNumber: string}) {
   return (
     <View style={styles.container}>
       <ForumText style={styles.text}>Mobile UI</ForumText>
-      {pageNumberText}
+      {topicNumberText}
     </View>
   );
 }

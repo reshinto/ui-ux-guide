@@ -1,6 +1,7 @@
 import React from "react";
 import {StyleSheet} from "react-native";
 import normalize from "react-native-normalize";
+
 import ForumText from "../../ThemedComponents/StyledText/ForumText";
 
 function DefaultPageSymbol() {
