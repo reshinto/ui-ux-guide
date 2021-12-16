@@ -1473,6 +1473,78 @@
 
 </details>
 
+## SVG Support
+
+<details>
+  <summary>Click to expand!</summary>
+
+### React Native (EXPO)
+
+<details>
+  <summary>Click to expand!</summary>
+
+- Install `react-native-svg` library
+
+  - [documentation](https://github.com/react-native-svg/react-native-svg#installation)
+
+  > expo install react-native-svg
+
+- Install `react-native-svg-transformer` library for file config
+
+  - [documentation](https://www.npmjs.com/package/react-native-svg-transformer)
+
+  > npm i react-native-svg-transformer
+
+- File setup
+
+  - Create or modify the `metro.config.js` file at root directory
+
+    ```javascript
+    const {getDefaultConfig} = require("expo/metro-config");
+
+    module.exports = (async () => {
+      const {
+        resolver: {sourceExts, assetExts},
+      } = await getDefaultConfig(__dirname);
+      return {
+        transformer: {
+          babelTransformerPath: require.resolve("react-native-svg-transformer"),
+        },
+        resolver: {
+          assetExts: assetExts.filter((ext) => ext !== "svg"),
+          sourceExts: [...sourceExts, "svg"],
+        },
+      };
+    })();
+    ```
+
+  - Modify `app.json`
+
+    ```json
+    {
+      "expo": {
+        "packagerOpts": {
+          "config": "metro.config.js",
+          "sourceExts": ["ts", "tsx", "js", "jsx", "svg"]
+        }
+      }
+    }
+    ```
+
+  - Create or add declaration into `declarations.d.ts` file at root directory
+
+    ```typescript
+    declare module "*.svg" {
+      import {SvgProps} from "react-native-svg";
+      const content: React.StatelessComponent<SvgProps>;
+      export default content;
+    }
+    ```
+
+</details>
+
+</details>
+
 ## Code Implementation Guide
 
 <details>
