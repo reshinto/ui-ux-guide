@@ -1584,4 +1584,17 @@
 
 </details>
 
+## Step 3: Complete Cover Screen
+
+<details>
+  <summary>Click to expand!</summary>
+
+![cover light](./instruction_images/coverLight.gif)
+
+![cover dark](./instruction_images/coverDark.gif)
+
+</details>
+
+</details>
+
 </details>
