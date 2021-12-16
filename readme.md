@@ -1482,7 +1482,9 @@
 
 <details>
   <summary>Click to expand!</summary>
-  
+
+![screen header](./instruction_images/screenHeader.gif)
+
 - Install `Forum` font
 
 - [download Forum Font](https://fonts.google.com/specimen/Forum)
@@ -1493,6 +1495,8 @@
 
 <details>
   <summary>Click to expand!</summary>
+
+![slider](./instruction_images/slider.gif)
 
 - Install `React Native Elements` library
 
