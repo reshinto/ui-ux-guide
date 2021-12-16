@@ -1,22 +1,8 @@
-import RootScreen from "../../../screens/RootScreen";
-import HomeScreen from "../../../screens/HomeScreen";
-import NotFoundScreen from "../../../screens/NotFoundScreen";
+import {SCREEN_NAMES} from "../../constants/navigation";
 
-export default [
-  {
-    name: "Root",
-    component: RootScreen,
-    initialParams: {pageNumber: ""},
-  },
-  {
-    name: "Home",
-    component: HomeScreen,
-    initialParams: {pageNumber: "00"},
-  },
-  {
-    name: "NotFound",
-    component: NotFoundScreen,
-    initialParams: {pageNumber: ""},
-  },
-];
-
+export const getScreenNameFromPageNum = (num: number) =>
+  ({
+    "0": SCREEN_NAMES.Root,
+    "1": SCREEN_NAMES.Home,
+    "2": SCREEN_NAMES.NotFound,
+  }[num.toString()]);
