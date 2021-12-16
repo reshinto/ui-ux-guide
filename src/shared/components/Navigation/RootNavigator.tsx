@@ -34,7 +34,7 @@ function RootNavigator() {
             <Stack.Screen
               key={name}
               name={name as any}
-              component={SCREEN_DATA[name]}
+              component={SCREEN_DATA[name]["component"]}
               initialParams={{
                 ...initialParams,
                 maxPageNumber: MAX_PAGE_NUMBER,
