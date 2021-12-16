@@ -4,7 +4,7 @@ import {StyleSheet} from "react-native";
 import {Slider as DefaultSlider} from "react-native-elements";
 import normalize from "react-native-normalize";
 
-import {colors} from "../../styles/palette";
+import {getThemeColor} from "../../utils/helpers";
 import {getScreenNameFromPageNum} from "../../utils/helpers/rootNavigator";
 import Text from "../ThemedComponents/Text";
 import View from "../ThemedComponents/View";
@@ -44,8 +44,8 @@ function Slider({
         minimumValue={0}
         step={1}
         allowTouchTrack={true}
-        minimumTrackTintColor={colors.black}
-        maximumTrackTintColor={colors.black}
+        minimumTrackTintColor={getThemeColor("text")}
+        maximumTrackTintColor={getThemeColor("text")}
         thumbTouchSize={styles.thumbTouchSize}
         trackStyle={styles.trackStyle}
         thumbStyle={styles.thumbStyle}

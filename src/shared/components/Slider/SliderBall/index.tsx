@@ -4,7 +4,7 @@ import normalize from "react-native-normalize";
 import {LinearGradient} from "expo-linear-gradient";
 
 import View from "../../ThemedComponents/View";
-import {colors} from "../../../styles/palette";
+import {getThemeColor} from "../../../utils/helpers";
 
 function SliderBall() {
   return (
@@ -13,7 +13,11 @@ function SliderBall() {
         start={[0, 0]}
         end={[1, 1]}
         style={[styles.ball]}
-        colors={[colors.pink, colors.blue, colors.purple]}
+        colors={[
+          getThemeColor("gradientOne"),
+          getThemeColor("gradientTwo"),
+          getThemeColor("gradientThree"),
+        ]}
       ></LinearGradient>
     </View>
   );

@@ -21,6 +21,9 @@ export const themes = {
     tint: colors.tintColorLight,
     tabIconDefault: '#ccc',
     tabIconSelected: colors.tintColorLight,
+    gradientOne: colors.pink,
+    gradientTwo: colors.blue,
+    gradientThree: colors.purple,
   },
   dark: {
     text: '#fff',
@@ -28,5 +31,8 @@ export const themes = {
     tint: colors.tintColorDark,
     tabIconDefault: '#ccc',
     tabIconSelected: colors.tintColorDark,
+    gradientOne: colors.purple,
+    gradientTwo: colors.blue,
+    gradientThree: colors.pink,
   },
 };
