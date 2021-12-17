@@ -6,6 +6,7 @@ const SLIDER_GRADIENT_PINK = "#FFA0DF";
 const SLIDER_GRADIENT_BLUE = "#6FADFF";
 const SLIDER_GRADIENT_PURPLE = "#5B43EA";
 const BACKGROUND_WHITE = "#F8F8F8";
+const BACKGROUND_DARK_GRAY = "#323639";
 
 
 export const colors = {
@@ -18,6 +19,7 @@ export const colors = {
   purple: SLIDER_GRADIENT_PURPLE,
   backgroundWhite: BACKGROUND_WHITE,
   tabIconDefault: TAB_ICON_COLOR,
+  backgroundDarkGray: BACKGROUND_DARK_GRAY,
 };
 
 export const themes = {
@@ -33,7 +35,7 @@ export const themes = {
   },
   dark: {
     text: colors.backgroundWhite,
-    background: colors.black,
+    background: colors.backgroundDarkGray,
     tint: colors.tintColorDark,
     tabIconDefault: colors.tabIconDefault,
     tabIconSelected: colors.tintColorDark,
