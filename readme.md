@@ -1609,7 +1609,9 @@
 <details>
   <summary>Click to expand!</summary>
 
-![about](./instruction_images/about.gif)
+![aboutLight](./instruction_images/aboutLight.jpg)
+
+![aboutDark](./instruction_images/aboutDark.jpg)
 
 </details>
 
