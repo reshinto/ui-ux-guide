@@ -1595,6 +1595,15 @@
 
 </details>
 
+## Step 4: Complete Contents Screen
+
+<details>
+  <summary>Click to expand!</summary>
+
+![contents](./instruction_images/contents.gif)
+
+</details>
+
 </details>
 
 </details>
