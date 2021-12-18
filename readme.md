@@ -1604,6 +1604,15 @@
 
 </details>
 
+## Step 5: Complete About Screen
+
+<details>
+  <summary>Click to expand!</summary>
+
+![about](./instruction_images/about.gif)
+
+</details>
+
 </details>
 
 </details>

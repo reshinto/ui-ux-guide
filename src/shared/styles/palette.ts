@@ -20,6 +20,8 @@ export const colors = {
   backgroundWhite: BACKGROUND_WHITE,
   tabIconDefault: TAB_ICON_COLOR,
   backgroundDarkGray: BACKGROUND_DARK_GRAY,
+  sectionTitlePurple: SLIDER_GRADIENT_PURPLE,
+  sectionTitlePink: SLIDER_GRADIENT_PINK,
 };
 
 export const themes = {
@@ -32,6 +34,7 @@ export const themes = {
     gradientOne: colors.pink,
     gradientTwo: colors.blue,
     gradientThree: colors.purple,
+    sectionTitle: colors.sectionTitlePurple,
   },
   dark: {
     text: colors.backgroundWhite,
@@ -42,5 +45,6 @@ export const themes = {
     gradientOne: colors.purple,
     gradientTwo: colors.blue,
     gradientThree: colors.pink,
+    sectionTitle: colors.sectionTitlePink,
   },
 };
