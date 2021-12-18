@@ -7,7 +7,8 @@ const LinkingConfig: LinkingOptions<RootStackParamList> = {
   config: {
     screens: {
       Root: "root",
-      Home: "home",
+      Contents: "contents",
+      About: "about",
       NotFound: "*",
     },
   },

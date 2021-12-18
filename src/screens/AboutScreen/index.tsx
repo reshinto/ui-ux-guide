@@ -9,9 +9,10 @@ import {
 } from "../../shared/components/Navigation/navigationTypes";
 import View from "../../shared/components/ThemedComponents/View";
 import MonoText from "../../shared/components/ThemedComponents/StyledText/MonoText";
+import {NOT_FOUND} from "../../shared/constants/contents";
 
-function HomeScreen({navigation}: RootStackScreenProps<"Home">) {
-  const {params} = useRoute<ScreenRouteProps<"Home">>() as any;
+function AboutScreen({navigation}: RootStackScreenProps<"About">) {
+  const {params} = useRoute<ScreenRouteProps<"About">>() as any;
 
   useEffect(() => {
     if (params?.topicNumber !== params?.currentTopicNumber) {
@@ -27,7 +28,7 @@ function HomeScreen({navigation}: RootStackScreenProps<"Home">) {
         onPress={() =>
           navigation.reset({
             index: 0,
-            routes: [{name: "NotFound"}] as any,
+            routes: [{name: NOT_FOUND.name}] as any,
           })
         }
       />
@@ -35,7 +36,7 @@ function HomeScreen({navigation}: RootStackScreenProps<"Home">) {
   );
 }
 
-export default HomeScreen;
+export default AboutScreen;
 
 const styles = StyleSheet.create({
   box: {

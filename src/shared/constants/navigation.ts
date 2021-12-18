@@ -1,47 +1,21 @@
-import HomeScreen from "../../screens/HomeScreen";
-import NotFoundScreen from "../../screens/NotFoundScreen";
 import RootScreen from "../../screens/RootScreen";
+import ContentsScreen from "../../screens/ContentsScreen";
+import AboutScreen from "../../screens/AboutScreen";
+import NotFoundScreen from "../../screens/NotFoundScreen";
+import { ROOT, CONTENTS, ABOUT, NOT_FOUND } from "./contents";
 
-export const SCREEN_DATA: any = {
-  Root: {
-    name: "Root",
-    component: RootScreen,
-    data: {
-      pageNumber: 0,
-      topicNumber: undefined
-    }
-  },
-  Home: {
-    name: "Home",
-    component: HomeScreen,
-    data: {
-      pageNumber: 1,
-      topicNumber: "00"
-    }
-  },
-  NotFound: {
-    name: "NotFound",
-    component: NotFoundScreen,
-    data: {
-      pageNumber: 0,
-      topicNumber: undefined
-    }
-  },
-};
+export const SCREEN_COMPONENTS: any = {
+  [ROOT.name]: RootScreen,
+  [CONTENTS.name]: ContentsScreen,
+  [ABOUT.name]: AboutScreen,
+  [NOT_FOUND.name]: NotFoundScreen,
+}
 
 export const APP_DATA = [
-  {
-    name: SCREEN_DATA.Root.name,
-    initialParams: SCREEN_DATA.Root.data,
-  },
-  {
-    name: SCREEN_DATA.Home.name,
-    initialParams: SCREEN_DATA.Home.data,
-  },
-  {
-    name: SCREEN_DATA.NotFound.name,
-    initialParams: SCREEN_DATA.NotFound.data,
-  },
+  ROOT,
+  CONTENTS,
+  ABOUT,
+  NOT_FOUND,
 ];
 
 const UNUSED_PAGE_NUMBER = 1;

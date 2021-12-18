@@ -5,7 +5,7 @@ import {RootStackParamList} from "./navigationTypes";
 import {
   APP_DATA,
   MAX_PAGE_NUMBER,
-  SCREEN_DATA,
+  SCREEN_COMPONENTS,
 } from "../../constants/navigation";
 import ScreenHeader from "../ScreenHeader";
 import Slider from "../Slider";
@@ -29,23 +29,21 @@ function RootNavigator() {
           animation: "none",
         }}
       >
-        {APP_DATA.map(
-          ({name, initialParams}: {name: string; initialParams: any}) => (
-            <Stack.Screen
-              key={name}
-              name={name as any}
-              component={SCREEN_DATA[name]["component"]}
-              initialParams={{
-                ...initialParams,
-                maxPageNumber: MAX_PAGE_NUMBER,
-                currentTopicNumber,
-                setCurrentTopicNumber,
-                currentPageNumber,
-                setCurrentPageNumber,
-              }}
-            />
-          )
-        )}
+        {APP_DATA.map((screenData: any) => (
+          <Stack.Screen
+            key={screenData.name}
+            name={screenData.name as any}
+            component={SCREEN_COMPONENTS[screenData.name]}
+            initialParams={{
+              ...screenData,
+              maxPageNumber: MAX_PAGE_NUMBER,
+              currentTopicNumber,
+              setCurrentTopicNumber,
+              currentPageNumber,
+              setCurrentPageNumber,
+            }}
+          />
+        ))}
       </Stack.Navigator>
     </>
   );

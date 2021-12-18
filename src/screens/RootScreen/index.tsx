@@ -12,6 +12,7 @@ import AppTitle from "../../assets/svgs/AppTitle.svg";
 import ScrollRightArrow from "../../assets/svgs/ScrollRightArrow.svg";
 import {colors} from "react-native-elements";
 import {getPageNumFromScreenName} from "../../shared/utils/helpers/rootNavigator";
+import {CONTENTS} from "../../shared/constants/contents";
 
 function RootScreen() {
   const {params} = useRoute<ScreenRouteProps<"Root">>() as any;
@@ -46,7 +47,7 @@ function RootScreen() {
         <TouchableOpacity
           style={styles.mainTextContainer}
           onPress={() => {
-            const nextScreenName = "Home";
+            const nextScreenName = CONTENTS.name;
             params?.setCurrentPageNumber(
               getPageNumFromScreenName(nextScreenName)
             );
