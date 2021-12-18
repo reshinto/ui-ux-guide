@@ -5,6 +5,10 @@ export type RootStackParamList = {
   Root: undefined;
   Contents: undefined;
   About: undefined;
+  ColumnGutterMargin: undefined;
+  Always4pxSizing: undefined;
+  AutoLayout: undefined;
+  FillWithImage: undefined;
   NotFound: undefined;
 };
 

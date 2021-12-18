@@ -7,6 +7,11 @@ const SLIDER_GRADIENT_BLUE = "#6FADFF";
 const SLIDER_GRADIENT_PURPLE = "#5B43EA";
 const BACKGROUND_WHITE = "#F8F8F8";
 const BACKGROUND_DARK_GRAY = "#323639";
+const BACKGROUND_PINK = "rgba(255, 160, 223, 0.15)";
+const BACKGROUND_BLUE = "rgba(111, 173, 255, 0.15)";
+const BACKGROUND_PURPLE = "rgba(91, 67, 234, 0.15)";
+const LIGHT_GREY = "lightgrey";
+const GREY = "#888888";
 
 
 export const colors = {
@@ -22,6 +27,11 @@ export const colors = {
   backgroundDarkGray: BACKGROUND_DARK_GRAY,
   sectionTitlePurple: SLIDER_GRADIENT_PURPLE,
   sectionTitlePink: SLIDER_GRADIENT_PINK,
+  pinkOpaque: BACKGROUND_PINK,
+  blueOpaque: BACKGROUND_BLUE,
+  purpleOpaque: BACKGROUND_PURPLE,
+  lightGrey: LIGHT_GREY,
+  shortcutText: GREY,
 };
 
 export const themes = {
@@ -35,6 +45,9 @@ export const themes = {
     gradientTwo: colors.blue,
     gradientThree: colors.purple,
     sectionTitle: colors.sectionTitlePurple,
+    gradientOneOpaque: colors.pinkOpaque,
+    gradientTwoOpaque: colors.blueOpaque,
+    gradientThreeOpaque: colors.purpleOpaque,
   },
   dark: {
     text: colors.backgroundWhite,
@@ -46,5 +59,8 @@ export const themes = {
     gradientTwo: colors.blue,
     gradientThree: colors.pink,
     sectionTitle: colors.sectionTitlePink,
+    gradientOneOpaque: colors.purpleOpaque,
+    gradientTwoOpaque: colors.blueOpaque,
+    gradientThreeOpaque: colors.pinkOpaque,
   },
 };
