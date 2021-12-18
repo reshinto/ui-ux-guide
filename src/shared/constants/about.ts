@@ -1,0 +1,3 @@
+export const SECTION_TITLE = "HELLO";
+
+export const SECTION_TEXT = "This guide includes all the basic UI Design information useful for front-end developers... everything that I’ve learnt so far about UI Design using Figma, through client and personal projects. This focuses on Mobile UI, but there are overlapping content that you can also use for general UI including for the web. You can just read along, or also try out some of the activities that come up through the guide.";

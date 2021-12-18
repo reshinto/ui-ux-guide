@@ -13,6 +13,7 @@ import ScrollRightArrow from "../../assets/svgs/ScrollRightArrow.svg";
 import {colors} from "react-native-elements";
 import {getPageNumFromScreenName} from "../../shared/utils/helpers/rootNavigator";
 import {CONTENTS} from "../../shared/constants/contents";
+import * as rootTexts from "../../shared/constants/root";
 
 function RootScreen() {
   const {params} = useRoute<ScreenRouteProps<"Root">>() as any;
@@ -30,7 +31,7 @@ function RootScreen() {
         <AppTitle width={"100%"} fill={getThemeColor("text")} />
       </View>
       <ForumText style={[styles.textContainer, styles.text]}>
-        starter guide for devs (& designers)
+        {rootTexts.MAIN_TEXT}
       </ForumText>
       <View style={styles.mainContainer}>
         <LinearGradient
@@ -57,15 +58,15 @@ function RootScreen() {
             });
           }}
         >
-          <ForumText style={styles.mainText}>Scroll </ForumText>
+          <ForumText style={styles.mainText}>
+            {rootTexts.MAIN_BUTTON_TEXT}
+          </ForumText>
           <ScrollRightArrow />
         </TouchableOpacity>
       </View>
       <View style={styles.bottomTextContainer}>
-        <ForumText style={styles.text}>using Figma</ForumText>
-        <ForumText style={styles.text}>
-          and with follow along exercises.
-        </ForumText>
+        <ForumText style={styles.text}>{rootTexts.LEFT_BOTTOM_TEXT}</ForumText>
+        <ForumText style={styles.text}>{rootTexts.RIGHT_BOTTOM_TEXT}</ForumText>
       </View>
     </View>
   );
