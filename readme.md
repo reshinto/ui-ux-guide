@@ -764,7 +764,7 @@
 
           export type RootStackParamList = {
             Root: undefined;
-            Home: undefined;
+            About: undefined;
             NotFound: undefined;
           };
           ```
@@ -783,7 +783,7 @@
             config: {
               screens: {
                 Root: "root",
-                Home: "home",
+                About: "about",
                 NotFound: "*",
               },
             },
@@ -845,7 +845,7 @@
 
           export type RootStackParamList = {
             Root: undefined;
-            Home: undefined;
+            About: undefined;
             NotFound: undefined;
           };
 
@@ -870,8 +870,8 @@
               <View style={styles.box}>
                 <Text style={styles.text}>Hello World 1!</Text>
                 <Button
-                  title="Go to Home"
-                  onPress={() => navigation.navigate("Home")}
+                  title="Go to About"
+                  onPress={() => navigation.navigate("About")}
                 />
               </View>
             );
@@ -890,9 +890,9 @@
           });
           ```
 
-      - Home Screen
+      - About Screen
 
-        - path: `../../../screens/HomeScreen/index.tsx`
+        - path: `../../../screens/AboutScreen/index.tsx`
 
           ```typescript
           import React from "react";
@@ -901,7 +901,7 @@
           import {NativeStackScreenProps} from "@react-navigation/native-stack";
           import {RootStackScreenProps} from "../../shared/components/Navigation/navigationTypes";
 
-          function HomeScreen({navigation}: RootStackScreenProps<"Home">) {
+          function AboutScreen({navigation}: RootStackScreenProps<"About">) {
             return (
               <View style={styles.box}>
                 <Text style={styles.text}>Hello World 2!</Text>
@@ -913,7 +913,7 @@
             );
           }
 
-          export default HomeScreen;
+          export default AboutScreen;
 
           const styles = StyleSheet.create({
             box: {
@@ -984,7 +984,7 @@
         ```javascript
         import React from "react";
         import {createNativeStackNavigator} from "@react-navigation/native-stack";
-        import HomeScreen from "../../../screens/HomeScreen";
+        import AboutScreen from "../../../screens/AboutScreen";
         import RootScreen from "../../../screens/RootScreen";
         import {RootStackParamList} from "./navigationTypes";
         import NotFoundScreen from "../../../screens/NotFoundScreen";
@@ -1000,7 +1000,7 @@
               }}
             >
               <Stack.Screen name="Root" component={RootScreen} />
-              <Stack.Screen name="Home" component={HomeScreen} />
+              <Stack.Screen name="About" component={AboutScreen} />
               <Stack.Screen name="NotFound" component={NotFoundScreen} />
             </Stack.Navigator>
           );
@@ -1041,11 +1041,11 @@
 
 ## React Native
 
-- light mode, Root Screen uses themed components, Home Screen uses themed with font styled components, Not Found Screen uses default components
+- light mode, Root Screen uses themed components, About Screen uses themed with font styled components, Not Found Screen uses default components
 
   ![customTheme](./instruction_images/customTheme.gif)
 
-- dark mode, Root Screen uses themed components, Home Screen uses themed with font styled components, Not Found Screen uses default components
+- dark mode, Root Screen uses themed components, About Screen uses themed with font styled components, Not Found Screen uses default components
 
   ![darkmode](./instruction_images/darkmode.gif)
 
@@ -1414,8 +1414,8 @@
            <View style={styles.box}>
              <Text style={styles.text}>Hello World 1!</Text>
              <Button
-               title="Go to Home"
-               onPress={() => navigation.navigate("Home")}
+               title="Go to About"
+               onPress={() => navigation.navigate("About")}
              />
            </View>
          );
@@ -1434,7 +1434,7 @@
        });
        ```
 
-     - use custom `View` and `MonoText` from `StyledText` themed component in `HomeScreen`
+     - use custom `View` and `MonoText` from `StyledText` themed component in `AboutScreen`
 
        ```typescript
        import React from "react";
@@ -1444,7 +1444,7 @@
        import View from "../../shared/components/ThemedComponents/View";
        import MonoText from "../../shared/components/ThemedComponents/StyledText/MonoText";
 
-       function HomeScreen({navigation}: RootStackScreenProps<"Home">) {
+       function AboutScreen({navigation}: RootStackScreenProps<"About">) {
          return (
            <View style={styles.box}>
              <MonoText style={styles.text}>Hello World 2!</MonoText>
@@ -1456,7 +1456,7 @@
          );
        }
 
-       export default HomeScreen;
+       export default AboutScreen;
 
        const styles = StyleSheet.create({
          box: {

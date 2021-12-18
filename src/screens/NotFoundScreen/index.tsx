@@ -10,6 +10,7 @@ import View from "../../shared/components/ThemedComponents/View";
 import Text from "../../shared/components/ThemedComponents/Text";
 import normalize from "react-native-normalize";
 import {colors} from "../../shared/styles/palette";
+import {ROOT} from "../../shared/constants/contents";
 
 function NotFoundScreen({navigation}: RootStackScreenProps<"NotFound">) {
   const {params} = useRoute<ScreenRouteProps<"NotFound">>() as any;
@@ -29,7 +30,7 @@ function NotFoundScreen({navigation}: RootStackScreenProps<"NotFound">) {
           params?.setCurrentPageNumber(0);
           navigation.reset({
             index: 0,
-            routes: [{name: "Root"}],
+            routes: [{name: ROOT.name as any}],
           });
         }}
       >

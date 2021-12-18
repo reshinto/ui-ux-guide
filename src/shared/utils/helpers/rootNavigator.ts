@@ -1,11 +1,5 @@
-import {SCREEN_DATA} from "../../constants/navigation";
+import {APP_DATA} from "../../constants/navigation";
 
-export const getScreenNameFromPageNum = (num: number) =>
-  ({
-    "0": SCREEN_DATA.Root.name,
-    "1": SCREEN_DATA.Home.name,
-    "2": SCREEN_DATA.NotFound.name,
-  }[num.toString()]);
+export const getScreenNameFromPageNum = (num: number) => APP_DATA[num].name;
 
-export const getPageNumFromScreenName = (name: string) =>
-  SCREEN_DATA[name].data.pageNumber;
+export const getPageNumFromScreenName = (name: string) => APP_DATA.findIndex((screen) => screen.name === name);
