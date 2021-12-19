@@ -25,17 +25,17 @@ export const ABOUT = {
 
 // layout
 export const COLUMN_GUTTER_MARGIN = {
-  name: "About",
+  name: "ColumnGutterMargin",
   topicTitle: "Column, Gutter, Margin",
   topicNumber: "01",
 }
 export const ALWAYS_4PX_SIZING = {
-  name: "About",
+  name: "Always4pxSizing",
   topicTitle: "Always 4px Sizing",
   topicNumber: "02",
 }
 export const AUTO_LAYOUT = {
-  name: "About",
+  name: "AutoLayout",
   topicTitle: "Auto Layout",
   topicNumber: "03",
 }
@@ -57,7 +57,7 @@ export const PEN_TOOL = {
   topicNumber: "06",
 }
 export const FILL_WITH_IMAGE = {
-  name: "About",
+  name: "FillWithImage",
   topicTitle: "Fill with Image",
   topicNumber: "07",
 }
