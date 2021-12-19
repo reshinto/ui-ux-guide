@@ -1,8 +1,8 @@
+import { ROOT, CONTENTS, ABOUT, NOT_FOUND, COLUMN_GUTTER_MARGIN, ALWAYS_4PX_SIZING, AUTO_LAYOUT, FILL_WITH_IMAGE } from "./contents";
 import RootScreen from "../../screens/RootScreen";
 import ContentsScreen from "../../screens/ContentsScreen";
 import AboutScreen from "../../screens/AboutScreen";
 import NotFoundScreen from "../../screens/NotFoundScreen";
-import { ROOT, CONTENTS, ABOUT, NOT_FOUND, COLUMN_GUTTER_MARGIN, ALWAYS_4PX_SIZING, AUTO_LAYOUT, FILL_WITH_IMAGE } from "./contents";
 import ColumnGutterMarginScreen from "../../screens/ColumnGutterMarginScreen";
 import Always4pxSizingScreen from "../../screens/Always4pxSizingScreen";
 import AutoLayoutScreen from "../../screens/AutoLayoutScreen";

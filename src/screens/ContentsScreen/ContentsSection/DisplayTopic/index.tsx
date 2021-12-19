@@ -2,6 +2,7 @@ import {useNavigation, useRoute} from "@react-navigation/native";
 import React from "react";
 import {StyleSheet, TouchableOpacity} from "react-native";
 import normalize from "react-native-normalize";
+
 import {ScreenRouteProps} from "../../../../shared/components/Navigation/navigationTypes";
 import ForumText from "../../../../shared/components/ThemedComponents/StyledText/ForumText";
 import View from "../../../../shared/components/ThemedComponents/View";

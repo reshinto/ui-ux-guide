@@ -4,9 +4,10 @@ import {
   DefaultTheme,
   NavigationContainer,
 } from "@react-navigation/native";
+import {ColorSchemeName} from "react-native";
+
 import LinkingConfig from "./LinkingConfig";
 import RootNavigator from "./RootNavigator";
-import {ColorSchemeName} from "react-native";
 
 function Navigation({colorScheme}: {colorScheme: ColorSchemeName}) {
   return (

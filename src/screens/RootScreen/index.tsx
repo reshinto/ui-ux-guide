@@ -10,10 +10,10 @@ import {getThemeColor} from "../../shared/utils/helpers";
 import ForumText from "../../shared/components/ThemedComponents/StyledText/ForumText";
 import AppTitle from "../../assets/svgs/AppTitle.svg";
 import ScrollRightArrow from "../../assets/svgs/ScrollRightArrow.svg";
-import {colors} from "react-native-elements";
 import {getPageNumFromScreenName} from "../../shared/utils/helpers/rootNavigator";
 import {CONTENTS} from "../../shared/constants/contents";
 import * as rootTexts from "../../shared/constants/root";
+import {colors} from "../../shared/styles/palette";
 
 function RootScreen() {
   const {params} = useRoute<ScreenRouteProps<"Root">>() as any;
@@ -58,7 +58,7 @@ function RootScreen() {
             });
           }}
         >
-          <ForumText style={styles.mainText}>
+          <ForumText style={[styles.mainText, {color: colors.white}]}>
             {rootTexts.MAIN_BUTTON_TEXT}
           </ForumText>
           <ScrollRightArrow />
@@ -117,7 +117,6 @@ const styles = StyleSheet.create({
     bottom: normalize(0),
   },
   mainText: {
-    color: colors.white,
     fontSize: normalize(12),
     fontWeight: "400",
     fontStyle: "normal",

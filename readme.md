@@ -1615,6 +1615,21 @@
 
 </details>
 
+## Step 6: Complete Column Gutter Margin Screen
+
+<details>
+  <summary>Click to expand!</summary>
+
+![columnLightTop](./instruction_images/columnLightTop.jpg)
+
+![columnLightBottom](./instruction_images/columnLightBottom.jpg)
+
+![columnDarkTop](./instruction_images/columnDarkTop.jpg)
+
+![columnDarkBottom](./instruction_images/columnDarkBottom.jpg)
+
+</details>
+
 </details>
 
 </details>

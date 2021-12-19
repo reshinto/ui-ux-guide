@@ -10,7 +10,6 @@ import ScreenTitle from "../../shared/components/ScreenTitle";
 import ScreenSection from "../../shared/components/ScreenSection";
 import ScreenScrollableWrapper from "../../shared/components/ScreenScrollableWrapper";
 import InstructionExample from "../../shared/components/InstructionExample";
-import normalize from "react-native-normalize";
 import ShortcutCmdExample from "../../shared/components/ShortcutCmdExample";
 
 function ColumnGutterMarginScreen() {

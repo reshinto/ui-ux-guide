@@ -1,9 +1,9 @@
 import React from "react";
 import {Image, StyleSheet} from "react-native";
 import normalize from "react-native-normalize";
+
 import {colors} from "../../styles/palette";
 import {getThemeColor} from "../../utils/helpers";
-
 import GradientBackground from "../GradientBackground";
 import Pointer from "../Pointer";
 import ForumText from "../ThemedComponents/StyledText/ForumText";

@@ -5,7 +5,6 @@ import {getThemeColor} from "../../utils/helpers";
 
 import GradientBackground from "../GradientBackground";
 import ForumText from "../ThemedComponents/StyledText/ForumText";
-
 import View from "../ThemedComponents/View";
 
 function ShortcutCmdExample({example}: any) {
