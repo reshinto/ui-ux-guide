@@ -5,6 +5,7 @@ import {LinearGradient} from "expo-linear-gradient";
 
 import {getThemeColor} from "../../utils/helpers";
 import View from "../ThemedComponents/View";
+import {colors} from "../../styles/palette";
 
 function GradientBackground({children}: any) {
   return (

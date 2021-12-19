@@ -13,7 +13,6 @@ const BACKGROUND_PURPLE = "rgba(91, 67, 234, 0.15)";
 const LIGHT_GREY = "lightgrey";
 const GREY = "#888888";
 
-
 export const colors = {
   white: WHITE,
   black: BLACK,
@@ -48,6 +47,8 @@ export const themes = {
     gradientOneOpaque: colors.pinkOpaque,
     gradientTwoOpaque: colors.blueOpaque,
     gradientThreeOpaque: colors.purpleOpaque,
+    shortcutText: colors.shortcutText,
+    bulletText: colors.white,
   },
   dark: {
     text: colors.backgroundWhite,
@@ -62,5 +63,7 @@ export const themes = {
     gradientOneOpaque: colors.purpleOpaque,
     gradientTwoOpaque: colors.blueOpaque,
     gradientThreeOpaque: colors.pinkOpaque,
+    shortcutText: colors.backgroundWhite,
+    bulletText: colors.black,
   },
 };

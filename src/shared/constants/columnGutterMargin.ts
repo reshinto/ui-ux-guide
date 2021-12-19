@@ -1,9 +1,9 @@
 import image1 from "../../assets/images/columnGutterMargin/image1.png";
 import image2 from "../../assets/images/columnGutterMargin/image2.png";
 import image3 from "../../assets/images/columnGutterMargin/image3.png";
-import ControlKey from "../../assets/svgs/ControlKey.svg";
-import Plus from "../../assets/svgs/PlusSymbol.svg";
-import Gkey from "../../assets/svgs/Gkey.svg";
+import ControlKey from "../../assets/svgs/ControlKey";
+import Plus from "../../assets/svgs/PlusSymbol";
+import Gkey from "../../assets/svgs/Gkey";
 
 export const SECTION_TITLE_1 = "CREATE A LAYOUT GRID";
 

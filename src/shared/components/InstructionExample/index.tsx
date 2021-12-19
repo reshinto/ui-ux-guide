@@ -2,11 +2,11 @@ import React from "react";
 import {Image, StyleSheet} from "react-native";
 import normalize from "react-native-normalize";
 import {colors} from "../../styles/palette";
+import {getThemeColor} from "../../utils/helpers";
 
 import GradientBackground from "../GradientBackground";
 import Pointer from "../Pointer";
 import ForumText from "../ThemedComponents/StyledText/ForumText";
-
 import View from "../ThemedComponents/View";
 
 function InstructionExample({example}: any) {
@@ -18,7 +18,9 @@ function InstructionExample({example}: any) {
           style={[styles.removeBackground, styles.contentsContainer]}
         >
           <View style={styles.indexContainer}>
-            <ForumText style={[styles.index, {color: colors.white}]}>
+            <ForumText
+              style={[styles.index, {color: getThemeColor("bulletText")}]}
+            >
               {index + 1}
             </ForumText>
           </View>
