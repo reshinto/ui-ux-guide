@@ -1,7 +1,7 @@
 import React from "react";
 import {StyleSheet} from "react-native";
 import normalize from "react-native-normalize";
-import {colors} from "../../styles/palette";
+import {getThemeColor} from "../../utils/helpers";
 
 import GradientBackground from "../GradientBackground";
 import ForumText from "../ThemedComponents/StyledText/ForumText";
@@ -22,7 +22,13 @@ function ShortcutCmdExample({example}: any) {
             ]}
           >
             <Svg style={styles.svg} />
-            {text && <ForumText style={styles.text}>{text}</ForumText>}
+            {text && (
+              <ForumText
+                style={[styles.text, {color: getThemeColor("shortcutText")}]}
+              >
+                {text}
+              </ForumText>
+            )}
           </View>
         ))}
       </View>
@@ -49,6 +55,5 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: normalize(12),
-    color: colors.shortcutText,
   },
 });
