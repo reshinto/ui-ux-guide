@@ -9,6 +9,7 @@ import * as texts from "../../shared/constants/always4pxSizing";
 import ScreenTitle from "../../shared/components/ScreenTitle";
 import ScreenSection from "../../shared/components/ScreenSection";
 import ScreenScrollableWrapper from "../../shared/components/ScreenScrollableWrapper";
+import ShortcutCmdExample from "../../shared/components/ShortcutCmdExample";
 
 function Always4pxSizingScreen() {
   const {params} = useRoute<ScreenRouteProps<"Always4pxSizing">>() as any;
@@ -37,6 +38,7 @@ function Always4pxSizingScreen() {
           sectionTitle={texts.SECTION_TITLE_3}
           sectionText={texts.SECTION_TEXT_3}
         />
+        <ShortcutCmdExample example={texts.SECTION_SHORTCUT_EXAMPLE_3} />
       </ScreenScrollableWrapper>
     </View>
   );
