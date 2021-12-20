@@ -9,6 +9,7 @@ import * as texts from "../../shared/constants/autoLayout";
 import ScreenTitle from "../../shared/components/ScreenTitle";
 import ScreenSection from "../../shared/components/ScreenSection";
 import ScreenScrollableWrapper from "../../shared/components/ScreenScrollableWrapper";
+import InstructionExample from "../../shared/components/InstructionExample";
 
 function AutoLayoutScreen() {
   const {params} = useRoute<ScreenRouteProps<"AutoLayout">>() as any;
@@ -32,6 +33,7 @@ function AutoLayoutScreen() {
           sectionTitle={texts.SECTION_TITLE_2}
           sectionText={texts.SECTION_TEXT_2}
         />
+        <InstructionExample example={texts.SECTION_INSTRUCTION_EXAMPLE_2} />
       </ScreenScrollableWrapper>
     </View>
   );
