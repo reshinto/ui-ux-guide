@@ -1,5 +1,7 @@
 # UI / UX Guide
 
+![demo](./images/demo.gif)
+
 ## Environment Setup and Basic Git Commands
 
 <details>
