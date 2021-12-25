@@ -8,10 +8,18 @@ export const SECTION_TITLE_1 = "GENERAL RULE";
 export const SECTION_TEXT_1 = "As a general rule, everything should be multiples of 4px (or 8px). By everything, this means everything:";
 
 export const SECTION_POINTS_1 = [
-  "Spacing between objects",
-  "Width and height of objects",
-  "Font sizes and line heights",
-  "Everything else",
+  {
+    text: "Spacing between objects",
+  },
+  {
+    text: "Width and height of objects",
+  },
+  {
+    text: "Font sizes and line heights",
+  },
+  {
+    text: "Everything else",
+  },
 ]
 
 export const SECTION_TITLE_2 = "EXCEPTION";

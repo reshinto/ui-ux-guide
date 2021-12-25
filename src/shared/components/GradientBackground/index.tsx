@@ -35,8 +35,6 @@ const styles = StyleSheet.create({
     marginTop: normalize(12),
   },
   background: {
-    paddingLeft: normalize(18),
-    paddingRight: normalize(18),
-    paddingTop: normalize(18),
+    padding: normalize(18),
   },
 });

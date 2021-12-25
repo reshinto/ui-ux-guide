@@ -13,20 +13,26 @@ export const SECTION_INSTRUCTION_EXAMPLE_1 = [
   {
     text: "Click on the frame (this one) in which you want to create your layout grid",
     points: [],
-    image: undefined,
-    imageHeight: undefined,
   },
   {
     text: "Click on the + beside ‘Layout grid’ on your right",
     points: [],
-    image: image1,
-    imageHeight: 36,
+    images: [
+      {
+        image: image1,
+        imageHeight: 36,
+      },
+    ],
   },
   {
     text: "Click on the ‘Layout grid settings’ icon",
     points: [],
-    image: image2,
-    imageHeight: 65,
+    images: [
+      {
+        image: image2,
+        imageHeight: 65,
+      },
+    ],
   },
   {
     text: "Change from ‘Grid’ to ‘Columns’ and set:",
@@ -35,8 +41,12 @@ export const SECTION_INSTRUCTION_EXAMPLE_1 = [
       "Margin = 20",
       "Gutter = 20",
     ],
-    image: image3,
-    imageHeight: 209,
+    images: [
+      {
+        image: image3,
+        imageHeight: 209,
+      }
+    ],
   },
 ];
 

@@ -9,6 +9,15 @@ export type RootStackParamList = {
   Always4pxSizing: undefined;
   AutoLayout: undefined;
   FillWithImage: undefined;
+  FindingIcons: undefined;
+  Typeface: undefined;
+  TypeHierarchy: undefined;
+  AccessibleColors: undefined;
+  Gradients: undefined;
+  CreatingComponents: undefined;
+  CreatingVariants: undefined;
+  UiKits: undefined;
+  UltimateDesignTip: undefined;
   NotFound: undefined;
 };
 

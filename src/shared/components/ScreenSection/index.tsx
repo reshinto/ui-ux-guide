@@ -1,8 +1,8 @@
 import React from "react";
-import {StyleSheet} from "react-native";
+import {StyleSheet, TouchableOpacity} from "react-native";
 import normalize from "react-native-normalize";
 
-import {getThemeColor} from "../../utils/helpers";
+import {getThemeColor, openBrowser} from "../../utils/helpers";
 import Pointer from "../Pointer";
 import ForumText from "../ThemedComponents/StyledText/ForumText";
 import View from "../ThemedComponents/View";
@@ -30,16 +30,34 @@ function ScreenSection({
       >
         {sectionTitle}
       </ForumText>
-      <ForumText style={[styles.text, styles.sectionText]}>
-        {sectionText}
-      </ForumText>
+      {sectionText ? (
+        <ForumText style={[styles.text, styles.sectionText]}>
+          {sectionText}
+        </ForumText>
+      ) : null}
       {sectionPointsArr &&
-        sectionPointsArr.map((point, index) => (
-          <View key={index} style={styles.pointTextContainer}>
-            <Pointer />
-            <ForumText style={[styles.pointText]}>{point}</ForumText>
-          </View>
-        ))}
+        sectionPointsArr.map(({text, url}: any, idx: number) =>
+          url ? (
+            <TouchableOpacity
+              key={idx}
+              onPress={() => {
+                openBrowser(url);
+              }}
+            >
+              <View style={styles.pointTextContainer}>
+                <Pointer />
+                <ForumText style={[styles.pointText, styles.touchable]}>
+                  {text}
+                </ForumText>
+              </View>
+            </TouchableOpacity>
+          ) : (
+            <View key={idx} style={styles.pointTextContainer}>
+              <Pointer />
+              <ForumText style={[styles.pointText]}>{text}</ForumText>
+            </View>
+          )
+        )}
     </View>
   );
 }
@@ -69,5 +87,8 @@ const styles = StyleSheet.create({
   pointText: {
     fontSize: normalize(16),
     lineHeight: normalize(24),
+  },
+  touchable: {
+    textDecorationLine: "underline",
   },
 });
