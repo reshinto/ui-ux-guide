@@ -10,7 +10,7 @@ const BACKGROUND_DARK_GRAY = "#323639";
 const BACKGROUND_PINK = "rgba(255, 160, 223, 0.15)";
 const BACKGROUND_BLUE = "rgba(111, 173, 255, 0.15)";
 const BACKGROUND_PURPLE = "rgba(91, 67, 234, 0.15)";
-const LIGHT_GREY = "lightgrey";
+const LIGHT_GREY = "#AAAAAA";
 const GREY = "#888888";
 
 export const colors = {

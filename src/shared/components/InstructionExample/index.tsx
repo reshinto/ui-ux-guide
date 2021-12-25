@@ -15,7 +15,11 @@ function InstructionExample({example}: any) {
       {example.map((content: any, index: number) => (
         <View
           key={index}
-          style={[styles.removeBackground, styles.contentsContainer]}
+          style={[
+            styles.removeBackground,
+            styles.contentsContainer,
+            index === 0 && {paddingTop: normalize(0)},
+          ]}
         >
           <View style={styles.indexContainer}>
             <ForumText
@@ -29,9 +33,9 @@ function InstructionExample({example}: any) {
               {content.text}
             </ForumText>
             {content.points.length
-              ? content.points.map((point: string, index: number) => (
+              ? content.points.map((point: string, idx: number) => (
                   <View
-                    key={index}
+                    key={idx}
                     style={[styles.removeBackground, styles.pointTextContainer]}
                   >
                     <Pointer />
@@ -39,11 +43,21 @@ function InstructionExample({example}: any) {
                   </View>
                 ))
               : null}
-            {content.image && (
-              <Image
-                source={content.image}
-                style={[styles.image, {height: normalize(content.imageHeight)}]}
-              />
+            {content.images &&
+              content.images.map((imageFile: any, idx: number) => (
+                <Image
+                  key={idx}
+                  source={imageFile.image}
+                  style={[
+                    styles.image,
+                    {height: normalize(imageFile.imageHeight)},
+                  ]}
+                />
+              ))}
+            {content.Svg && (
+              <View style={[styles.removeBackground, styles.svg]}>
+                <content.Svg />
+              </View>
             )}
           </View>
         </View>
@@ -60,7 +74,7 @@ const styles = StyleSheet.create({
   },
   contentsContainer: {
     flexDirection: "row",
-    paddingBottom: normalize(24),
+    paddingTop: normalize(24),
   },
   indexContainer: {
     backgroundColor: colors.lightGrey,
@@ -97,6 +111,9 @@ const styles = StyleSheet.create({
   image: {
     width: normalize(189),
     resizeMode: "contain",
+    marginTop: normalize(8),
+  },
+  svg: {
     marginTop: normalize(8),
   },
 });

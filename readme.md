@@ -1545,6 +1545,64 @@
 
 </details>
 
+## Open Web Browser
+
+<details>
+  <summary>Click to expand!</summary>
+
+## React Native (Expo)
+
+<details>
+  <summary>Click to expand!</summary>
+
+![open browser](./instruction_images/openBrowser.gif)
+
+- Install `Expo Web Browser` library
+
+  - this will also auto install `React Native Web` library
+
+  - [documentation](https://docs.expo.dev/versions/latest/sdk/webbrowser/)
+
+  > expo install expo-web-browser
+
+- Implementation
+
+  - Create a helper method
+
+    - path: `./shared/utils/helpers/index.tsx`
+
+      ```typescript
+      import * as WebBrowser from "expo-web-browser";
+
+      export const openBrowser = (url: string) => {
+        WebBrowser.openBrowserAsync(url);
+      };
+      ```
+
+  - Use the helper method in `TouchableOpacity` component
+
+    ```typescript
+    import React from "react";
+    import {TouchableOpacity, Text} from "react-native";
+    import {openBrowser} from "../../utils/helpers";
+
+    export default ({url}: {url: string}) {
+      return (
+        <TouchableOpacity
+          onPress={() => {
+            openBrowser(url);
+          }}
+        >
+          <Text>{text}</Text>
+        </TouchableOpacity>
+      );
+    }
+    ```
+
+</details>
+
+</details>
+
 ## Code Implementation Guide
 
 <details>

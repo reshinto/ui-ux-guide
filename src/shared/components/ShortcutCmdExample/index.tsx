@@ -40,7 +40,6 @@ export default ShortcutCmdExample;
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    paddingBottom: normalize(16),
   },
   removeBackground: {
     backgroundColor: "transparent",

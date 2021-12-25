@@ -6,7 +6,7 @@ export default ({style}: any) => {
   const color = getThemeColor("text");
   const borderColor = getThemeColor("gradientThree");
   return (
-    <Svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+    <Svg width="44" height="44" viewBox="0 0 44 44" fill="none" style={style}>
       <Rect
         x="0.75"
         y="0.75"
